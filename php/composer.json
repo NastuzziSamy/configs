@@ -1,0 +1,47 @@
+{
+    "name": "",
+    "description": "",
+    "keywords": [],
+    "license": "MIT",
+    "config": {
+        "platform": {
+            "php": "7.0.8"
+        }
+    },
+    "require": {
+        "php": ">=7.0.8"
+    },
+    "authors": [
+        {
+            "name": "Samy Nastuzzi",
+            "email": "samy@nastuzzi.fr"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "\\": "src/"
+        }
+    },
+    "scripts": {
+        "test:lint": [
+            "./vendor/bin/phpcs src",
+            "./vendor/bin/phpmd src text phpmd.xml"
+        ],
+        "fix:lint": [
+            "./vendor/bin/phpcbf src"
+        ],
+        "test:unit": [
+            "./vendor/bin/phpunit --bootstrap vendor/autoload.php tests"
+        ],
+        "test": [
+            "@composer test:lint",
+            "@composer test:unit"
+        ]
+    },
+    "require-dev": {
+        "phpmd/phpmd": ">=2.7",
+        "squizlabs/php_codesniffer": ">=3.5",
+        "phpstan/phpstan": ">=0.9.2",
+        "phpunit/phpunit": ">=6.5"
+    }
+}
